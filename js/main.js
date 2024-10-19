@@ -1,47 +1,26 @@
-function appendSeats(seats, rowType) {
-  const row = document.querySelector(`.${rowType}`);
-  for (let i = 1; i <= seats; i++) {
-    const seat = document.createElement("div");
-    seat.classList.add("seat");
-    row.appendChild(seat);
+function createSeatMap(rows, cols) {
+  const seatMap = document.createElement('div');
+  seatMap.classList.add('seat-map');
+  
+  for (let r = 0; r < rows; r++) {
+      const row = document.createElement('div');
+      row.classList.add('row');
+      
+      for (let c = 0; c < cols; c++) {
+          const seat = document.createElement('div');
+          seat.classList.add('seat');
+          row.appendChild(seat);
+      }
+      
+      seatMap.appendChild(row);
   }
+  
+  return seatMap;
 }
 
-function selectSeats() {
-  const seat = document.querySelectorAll(".seat");
-  seat.forEach((item) => {
-    item.addEventListener("click", () => {
-      item.classList.toggle("selected");
-    });
-  });
-}
+const seatingContainer = document.getElementById('seating');
 
-function markRandomSeats(SEAT_RESERVED) {
-  const totalSeats = document.querySelectorAll(".seat");
-  const reservedSeats = getRandomSeats(totalSeats, SEAT_RESERVED);
-  reservedSeats.forEach((seat) => {
-    if (
-      seat.classList.contains("selected") ||
-      seat.classList.contains("available")
-    ) {
-      return;
-    }
-    seat.classList.add("reserved");
-  });
+// Create 4 seat maps with 4 rows and 4 columns each
+for (let i = 0; i < 4; i++) {
+  seatingContainer.appendChild(createSeatMap(4, 4));
 }
-
-function getRandomSeats(seats, count) {
-  const shuffledSeats = Array.from(seats).sort(() => 0.5 - Math.random());
-  return shuffledSeats.slice(0, count);
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const SEAT_RESERVED = 10;
-  appendSeats(12, "first-front-row");
-  appendSeats(14, "second-front-row");
-  appendSeats(96, "middle-row");
-  appendSeats(14, "second-last-row");
-  appendSeats(12, "first-last-row");
-  selectSeats();
-  markRandomSeats(SEAT_RESERVED);
-});
