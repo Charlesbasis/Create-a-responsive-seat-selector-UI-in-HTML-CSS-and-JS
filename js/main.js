@@ -18,9 +18,42 @@ function createSeatMap(rows, cols) {
   return seatMap;
 }
 
-const seatingContainer = document.getElementById('seating');
+const [seatingLeftContainerFrontGroup, seatingMiddleContainerFrontGroup, seatingRightContainerFrontGroup] = [
+  document.getElementById("seating-left-front-group"),
+  document.getElementById("seating-middle-front-group"),
+  document.getElementById("seating-right-front-group")
+];
 
-// Create 4 seat maps with 4 rows and 4 columns each
-for (let i = 0; i < 4; i++) {
-  seatingContainer.appendChild(createSeatMap(4, 4));
+// Create seat map with rows and columns each
+for (let i = 0; i < 1; i++) {
+  seatingLeftContainerFrontGroup.appendChild(createSeatMap(4, 4));
+  seatingMiddleContainerFrontGroup.appendChild(createSeatMap(4, 10));
+  seatingRightContainerFrontGroup.appendChild(createSeatMap(4, 4));  
 }
+
+const [seatingLeftContainerMiddleGroup, seatingMiddleContainerMiddleGroup, seatingRightContainerMiddleGroup] = [
+  document.getElementById("seating-left-middle-group"),
+  document.getElementById("seating-middle-middle-group"),
+  document.getElementById("seating-right-middle-group")
+];
+
+// Create seat map with rows and columns each
+for (let i = 0; i < 1; i++) {
+  seatingLeftContainerMiddleGroup.appendChild(createSeatMap(4, 4));
+  seatingMiddleContainerMiddleGroup.appendChild(createSeatMap(4, 10));
+  seatingRightContainerMiddleGroup.appendChild(createSeatMap(4, 4));  
+}
+
+const [seatingLeftContainerBackGroup, seatingMiddleContainerBackGroup, seatingRightContainerBackGroup] = [
+  document.getElementById("seating-left-back-group"),
+  document.getElementById("seating-middle-back-group"),
+  document.getElementById("seating-right-back-group")
+];
+
+// Create seat map with rows and columns each
+for (let i = 0; i < 1; i++) {
+  seatingLeftContainerBackGroup.appendChild(createSeatMap(7, 4));
+  seatingMiddleContainerBackGroup.appendChild(createSeatMap(7, 10));
+  seatingRightContainerBackGroup.appendChild(createSeatMap(7, 4));
+}
+

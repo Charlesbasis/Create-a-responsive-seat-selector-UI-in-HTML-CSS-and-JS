@@ -1,6 +1,6 @@
 :root {
   --screen-width: 80%;
-  --seat-size: 40px;
+  --seat-size: 2rem;
   --seat-gap: 5px;
 }
 
@@ -12,7 +12,6 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #222;
   color: #fff;
 }
 
@@ -21,25 +20,24 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 20px;
 }
 
 .screen {
   width: var(--screen-width);
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-top: 120px solid #555;
-  margin-bottom: 20px;
+  border-left: 10rem solid transparent;
+  border-right: 10rem solid transparent;
+  border-top: 10rem solid #D3D3D3;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 1;
-  transform: translateX(-10px);
+  transform: translateX(4rem);
+  align-items: center;
 }
 
 .seating {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 25px;
 }
 
@@ -51,7 +49,6 @@ body {
 .seat-map .row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   margin: 0;
 }
 
@@ -60,8 +57,6 @@ body {
   height: var(--seat-size);
   margin: var(--seat-gap);
   background-color: #5E00FF;
-  border: 2px solid #000;
-  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -75,7 +70,7 @@ body {
       width: 90%;
       border-left: 50px solid transparent;
       border-right: 50px solid transparent;
-      border-top: 80px solid #555;
+      border-top: 80px solid #D3D3D3;
   }
 
   .seat {
@@ -90,7 +85,7 @@ body {
       width: 100%;
       border-left: 30px solid transparent;
       border-right: 30px solid transparent;
-      border-top: 60px solid #555;
+      border-top: 60px solid #D3D3D3;
   }
 
   .seat {
@@ -98,4 +93,32 @@ body {
       height: 25px;
       margin: 3px;
   }
+}
+
+/* Create three equal columns that floats next to each other */
+#seating-left, #seating-middle, #seating-right {
+  float: left;
+  padding: 10px;  
+}
+
+/* Clear floats after the columns */
+#seating-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  #seating-left, #seating-middle, #seating-right {
+    width: 100%;
+  }
+}
+
+#seating-row-middle-group, #seating-row-back-group {
+  margin-top: 3rem;
+}
+
+#seating-row-back-group {
+    padding-bottom: 50px;
 }
